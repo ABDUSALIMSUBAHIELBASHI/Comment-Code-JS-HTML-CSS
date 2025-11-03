@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Signup Animation</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top, #1a1a1a, #000);
+      color: #fff;
+    }
+
+    .container {
+      position: relative;
+      width: 850px;
+      height: 480px;
+      background: linear-gradient(135deg, #1a1a1a 50%, #ff6a00);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      transition: 0.7s ease-in-out;
+    }
+
+    .form-box {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: #111;
+      padding: 40px;
+      transition: 0.7s ease;
+      z-index: 10;
+    }
+
+    .form-box h2 { font-size: 1.8rem; text-align: center; margin-bottom: 20px; }
+
+    .input-box { position: relative; margin: 20px 0; }
+
+    .input-box input {
+      width: 100%;
+      padding: 10px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #555;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .input-box label {
+      position: absolute;
+      left: 0;
+      top: 10px;
+      color: #888;
+      pointer-events: none;
+      transition: 0.3s;
+    }
+
+    .input-box input:focus ~ label,
+    .input-box input:valid ~ label {
+      top: -10px;
+      font-size: 0.8rem;
+      color: #ff6a00;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(90deg, #ff6a00, #ff9a00);
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn:hover { background: linear-gradient(90deg, #ff9a00, #ff6a00); }
+
+    .toggle-text { text-align: center; margin-top: 10px; font-size: 0.9rem; }
+    .toggle-text a { color: #ff6a00; text-decoration: none; font-weight: 600; }
+
+    .info-box {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .info-box h2 { font-size: 2rem; margin-bottom: 10px; }
+    .info-box p { color: #f1f1f1; line-height: 1.5; }
+
+    .container.active .login { transform: translateX(-100%); opacity: 0; }
+    .container.active .signup { transform: translateX(0); opacity: 1; }
+    .signup { transform: translateX(100%); opacity: 0; transition: 0.7s ease; }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    footer a { color: #ff6a00; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+  
+    <div class="form-box login">
+      <h2>Login</h2>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="input-box">
+          <input type="text" name="username" required>
+          <label>Username</label>
+        </div>
+        <div class="input-box">
+          <input type="password" name="password" required>
+          <label>Password</label>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <p class="toggle-text">Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+      </form>
+    </div>
+
+
+    <div class="form-box signup">
+      <h2>Sign Up</h2>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="input-box">
+          <input type="text" name="username" required>
+          <label>Username</label>
+        </div>
+        <div class="input-box">
+          <input type="email" name="email" required>
+          <label>Email</label>
+        </div>
+        <div class="input-box">
+          <input type="password" name="password" required>
+          <label>Password</label>
+        </div>
+        <button type="submit" class="btn">Register</button>
+        <p class="toggle-text">Already have an account? <a href="#" id="showLogin">Login</a></p>
+      </form>
+    </div>
+
+    <div class="info-box">
+      <h2>WELCOME BACK!</h2>
+      <p>We are happy to have you with us again. If you need anything, we are here to help.</p>
+    </div>
+    <footer>
+      Contact Developer: 
+      <a href="mailto:salimabdu759@gmail.com">salimabdu759@gmail.com</a> |
+      📞 +250 739 390 715 — Kigali, Rwanda
+    </footer>
+  </div>
+
+  <script>
+    const container = document.getElementById('container');
+    const showSignup = document.getElementById('showSignup');
+    const showLogin = document.getElementById('showLogin');
+
+    showSignup.addEventListener('click', (e) => {
+      e.preventDefault();
+      container.classList.add('active');
+    });
+
+    showLogin.addEventListener('click', (e) => {
+      e.preventDefault();
+      container.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
